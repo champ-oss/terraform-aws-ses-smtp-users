@@ -1,3 +1,4 @@
+# required policy action for smtp user
 data "aws_iam_policy_document" "smtp_user" {
   statement {
     actions = ["ses:SendRawEmail"]
