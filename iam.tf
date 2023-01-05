@@ -7,7 +7,6 @@ data "aws_iam_policy_document" "smtp_user" {
   }
 }
 
-
 resource "aws_iam_user" "smtp_user" {
   name = "ses-smtp-user-${random_string.identifier.result}"
   tags = merge(local.tags, var.tags)
