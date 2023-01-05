@@ -1,4 +1,4 @@
-# terraform-module-template
+# terraform-aws-ses-smtp-users
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
