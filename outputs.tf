@@ -1,6 +1,6 @@
-output "smtp_username" {
+output "smtp_key" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user#name"
-  value       = aws_iam_user.smtp_user.id
+  value       = aws_iam_access_key.smtp_user.id
 }
 
 output "smtp_password" {
