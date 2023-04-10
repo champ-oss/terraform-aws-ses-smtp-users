@@ -8,3 +8,11 @@ output "smtp_password" {
   value       = aws_iam_access_key.smtp_user.ses_smtp_password_v4
   sensitive   = true
 }
+
+output "smtp_secret" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key#secret"
+  value       = aws_iam_access_key.smtp_user.secret
+  sensitive   = true
+}
+
+
