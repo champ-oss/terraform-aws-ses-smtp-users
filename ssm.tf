@@ -20,6 +20,6 @@ resource "aws_ssm_parameter" "smtp_password" {
   name        = "ses-smtp-user-${random_string.identifier.result}"
   description = "smtp user password for non supported region"
   type        = "SecureString"
-  value       = data.local_file.smtp_password_output.content
+  value       = data.local_file.smtp_password_output[0].content
   tags        = merge(local.tags, var.tags)
 }
