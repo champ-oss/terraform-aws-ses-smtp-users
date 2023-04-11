@@ -11,7 +11,7 @@ resource "null_resource" "smtp_password" {
 
 data "local_file" "smtp_password_output" {
   count      = var.enable_smtp_password ? 1 : 0
-  filename   = "${path.module}/smtp_password_output"
+  filename   = "${path.module}/smtp_password_output.txt"
   depends_on = ["null_resource.smtp_password"]
 }
 
