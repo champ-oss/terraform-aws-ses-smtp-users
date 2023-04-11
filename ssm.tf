@@ -4,7 +4,7 @@ resource "null_resource" "smtp_password" {
     smtp_secret = aws_iam_access_key.smtp_user.secret
   }
   provisioner "local-exec" {
-    command     = "chmod +x ${path.module}/smtp_password.py;python ${path.module}/smtp_password.py.py ${aws_iam_access_key.smtp_user.secret} ${var.smtp_region} >> ${path.module}/smtp_password_output.txt"
+    command     = "chmod +x ${path.module}/smtp_password.py;python ${path.module}/smtp_password.py ${aws_iam_access_key.smtp_user.secret} ${var.smtp_region} >> ${path.module}/smtp_password_output.txt"
     interpreter = ["bash", "-c"]
   }
 }
