@@ -17,7 +17,7 @@ data "local_file" "smtp_password_output" {
 
 resource "aws_ssm_parameter" "smtp_password" {
   name        = "ses-smtp-user-${random_string.identifier.result}"
-  description = "smtp user password for non supported region"
+  description = "smtp user password output for supported or non-supported regions"
   type        = "SecureString"
   value       = var.enable_smtp_password_create ? data.local_file.smtp_password_output[0].content : aws_iam_access_key.smtp_user.ses_smtp_password_v4
   tags        = merge(local.tags, var.tags)
