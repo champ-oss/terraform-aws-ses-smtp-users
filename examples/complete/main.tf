@@ -3,6 +3,5 @@ provider "aws" {
 }
 
 module "this" {
-  source               = "../../"
-  enable_smtp_password = true
+  source = "../../"
 }

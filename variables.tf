@@ -18,7 +18,7 @@ variable "tags" {
   default     = {}
 }
 
-variable "enable_smtp_password" {
+variable "enable_smtp_password_create" {
   description = "enable smtp password for non supported regions"
   type        = bool
   default     = false

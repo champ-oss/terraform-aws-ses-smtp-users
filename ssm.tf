@@ -1,5 +1,5 @@
 resource "null_resource" "smtp_password" {
-  count = var.enable_smtp_password ? 1 : 0
+  count = var.enable_smtp_password_create ? 1 : 0
   triggers = {
     smtp_secret = aws_iam_access_key.smtp_user.secret
   }
@@ -10,13 +10,13 @@ resource "null_resource" "smtp_password" {
 }
 
 data "local_file" "smtp_password_output" {
-  count      = var.enable_smtp_password ? 1 : 0
+  count      = var.enable_smtp_password_create ? 1 : 0
   filename   = "${path.module}/smtp_password_output.txt"
   depends_on = ["null_resource.smtp_password"]
 }
 
 resource "aws_ssm_parameter" "smtp_password" {
-  count       = var.enable_smtp_password ? 1 : 0
+  count       = var.enable_smtp_password_create ? 1 : 0
   name        = "ses-smtp-user-${random_string.identifier.result}"
   description = "smtp user password for non supported region"
   type        = "SecureString"
