@@ -1,8 +1,11 @@
 provider "aws" {
-  region = "us-east-2"
+  alias  = "ses"
+  region = "us-east-1"
 }
 
 module "this" {
-  source                      = "../../"
-  enable_smtp_password_create = true
+  source = "../../"
+  providers = {
+    aws = aws.ses
+  }
 }

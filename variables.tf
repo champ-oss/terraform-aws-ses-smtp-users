@@ -18,14 +18,14 @@ variable "tags" {
   default     = {}
 }
 
-variable "enable_smtp_password_create" {
-  description = "enable smtp password for non supported regions"
-  type        = bool
-  default     = false
+variable "name" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user#name"
+  type        = string
+  default     = ""
 }
 
-variable "smtp_region" {
-  description = "region to create smtp password for"
+variable "policy_name" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user#name"
   type        = string
-  default     = "us-east-1"
+  default     = "AmazonSesSendingAccess"
 }

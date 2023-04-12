@@ -3,7 +3,7 @@
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+valid Provider regions are ap-south-1, ap-southeast-2, eu-central-1, eu-west-1, us-east-1 and us-west-2.  The ses_smtp_password_v4 will output in non supported regions, but currently not supported and won't validate
 
 ## Providers
 
