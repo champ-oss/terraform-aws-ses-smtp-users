@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "smtp_user" {
 }
 
 resource "aws_iam_user" "smtp_user" {
-  name = "ses-smtp-user-${random_string.identifier.result}"
+  name = var.name != "" ? var.name : "${var.git}-${random_string.identifier.result}"
   tags = merge(local.tags, var.tags)
 }
 
@@ -18,8 +18,8 @@ resource "aws_iam_access_key" "smtp_user" {
 }
 
 resource "aws_iam_policy" "this" {
-  name_prefix = "AmazonSesSendingAccess-"
-  policy      = data.aws_iam_policy_document.smtp_user.json
+  name   = var.policy_name != "" ? var.policy_name : "${var.git}-${random_string.identifier.result}"
+  policy = data.aws_iam_policy_document.smtp_user.json
 }
 
 resource "aws_iam_user_policy_attachment" "this" {

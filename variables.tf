@@ -17,3 +17,15 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "name" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user#name"
+  type        = string
+  default     = ""
+}
+
+variable "policy_name" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user#name"
+  type        = string
+  default     = "AmazonSesSendingAccess"
+}
