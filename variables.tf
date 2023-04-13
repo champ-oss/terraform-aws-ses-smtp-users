@@ -27,5 +27,5 @@ variable "name" {
 variable "policy_name" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user#name"
   type        = string
-  default     = "AmazonSesSendingAccess"
+  default     = ""
 }
