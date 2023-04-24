@@ -9,3 +9,8 @@ output "smtp_password" {
   value       = aws_iam_access_key.smtp_user.ses_smtp_password_v4
   sensitive   = true
 }
+
+output "smtp_password_kms" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key#ses_smtp_password_v4"
+  value       = var.enable_kms_output ? aws_kms_ciphertext.this[0].ciphertext_blob : null
+}
