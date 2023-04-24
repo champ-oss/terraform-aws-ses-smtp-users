@@ -29,3 +29,9 @@ variable "policy_name" {
   type        = string
   default     = ""
 }
+
+variable "enable_kms_output" {
+  description = "Enable KMS encryption of output values"
+  type        = bool
+  default     = false
+}
