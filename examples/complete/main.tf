@@ -4,7 +4,9 @@ provider "aws" {
 }
 
 module "this" {
-  source = "../../"
+  source            = "../../"
+  enable_kms_output = true
+
   providers = {
     aws = aws.ses
   }
