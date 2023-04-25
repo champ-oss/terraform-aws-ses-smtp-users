@@ -1,7 +1,7 @@
 # Only used to KMS encrypt the output values
 module "kms" {
   count           = var.enable_kms_output ? 1 : 0
-  source          = "github.com/champ-oss/terraform-aws-kms.git?ref=v1.0.30-44f94bf"
+  source          = "github.com/champ-oss/terraform-aws-kms.git?ref=v1.0.31-3fc28eb"
   git             = var.git
   name            = "alias/${var.git}-${random_string.identifier.result}"
   account_actions = []
