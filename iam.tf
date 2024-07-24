@@ -1,5 +1,6 @@
 # required policy action for smtp user
 data "aws_iam_policy_document" "smtp_user" {
+  count = var.enabled ? 1 : 0
   statement {
     actions = ["ses:SendRawEmail"]
     resources = [
@@ -9,20 +10,24 @@ data "aws_iam_policy_document" "smtp_user" {
 }
 
 resource "aws_iam_user" "smtp_user" {
-  name = var.name != "" ? var.name : "${var.git}-${random_string.identifier.result}"
-  tags = merge(local.tags, var.tags)
+  count = var.enabled ? 1 : 0
+  name  = var.name != "" ? var.name : "${var.git}-${random_string.identifier[0].result}"
+  tags  = merge(local.tags, var.tags)
 }
 
 resource "aws_iam_access_key" "smtp_user" {
-  user = aws_iam_user.smtp_user.name
+  count = var.enabled ? 1 : 0
+  user  = aws_iam_user.smtp_user[0].name
 }
 
 resource "aws_iam_policy" "this" {
-  name   = var.policy_name != "" ? var.policy_name : "${var.git}-${random_string.identifier.result}"
-  policy = data.aws_iam_policy_document.smtp_user.json
+  count  = var.enabled ? 1 : 0
+  name   = var.policy_name != "" ? var.policy_name : "${var.git}-${random_string.identifier[0].result}"
+  policy = data.aws_iam_policy_document.smtp_user[0].json
 }
 
 resource "aws_iam_user_policy_attachment" "this" {
-  user       = aws_iam_user.smtp_user.name
-  policy_arn = aws_iam_policy.this.arn
+  count      = var.enabled ? 1 : 0
+  user       = aws_iam_user.smtp_user[0].name
+  policy_arn = aws_iam_policy.this[0].arn
 }
