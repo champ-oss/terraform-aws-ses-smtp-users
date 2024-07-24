@@ -35,3 +35,9 @@ variable "enable_kms_output" {
   type        = bool
   default     = false
 }
+
+variable "enabled" {
+  description = "Set to false to prevent the module from creating any resources"
+  type        = bool
+  default     = false
+}
