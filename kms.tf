@@ -4,7 +4,7 @@ module "kms" {
   source          = "github.com/champ-oss/terraform-aws-kms.git?ref=v1.0.34-a5b529e"
   enabled         = var.enabled ? true : false
   git             = var.git
-  name            = "alias/${var.git}-${random_string.identifier[0].result}"
+  name            = try("alias/${var.git}-${random_string.identifier[0].result}", "")
   account_actions = []
   tags            = merge(local.tags, var.tags)
 }
