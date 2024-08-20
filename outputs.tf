@@ -14,3 +14,8 @@ output "smtp_password_kms" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key#ses_smtp_password_v4"
   value       = var.enable_kms_output && var.enabled ? aws_kms_ciphertext.this[0].ciphertext_blob : ""
 }
+
+output "password_ssm_name" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter#name"
+  value       = var.enabled ? aws_ssm_parameter.smtp_password[0].name : ""
+}
