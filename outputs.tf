@@ -17,5 +17,5 @@ output "smtp_password_kms" {
 
 output "password_ssm_name" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter#name"
-  value       = var.enabled ? aws_ssm_parameter.this[0].name : ""
+  value       = var.enabled ? aws_ssm_parameter.smtp_password[0].name : ""
 }
